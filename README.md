@@ -104,7 +104,7 @@ All providers use raw `fetch()` — zero SDK dependencies:
 |----------|----------|---------------|
 | Anthropic | `api.anthropic.com/v1/messages` | `claude-sonnet-4-20250514` |
 | OpenAI | `api.openai.com/v1/chat/completions` | `gpt-4o` |
-| OpenRouter | `openrouter.ai/api/v1/chat/completions` | `anthropic/claude-sonnet-4-20250514` |
+| OpenRouter | `openrouter.ai/api/v1/chat/completions` | `openai/gpt-5.4` |
 
 OpenAI and OpenRouter use a shared adapter that translates between Anthropic's native tool-use format and OpenAI's `tool_calls` format.
 
