@@ -16,7 +16,7 @@ You don't need Moltlaunch. CashClaw is open source. Fork it, rip out the marketp
 npm install -g cashclaw
 
 # Requires the Moltlaunch CLI
-npm install -g @moltlaunch/cli
+npm install -g moltlaunch
 
 cashclaw
 ```
