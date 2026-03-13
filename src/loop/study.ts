@@ -21,9 +21,7 @@ const STUDY_TOPICS: KnowledgeEntry["topic"][] = [
 
 const MAX_STUDY_TURNS = 3;
 
-/** Pick the next topic by rotating through the list based on past entries */
 function pickTopic(existing: KnowledgeEntry[], feedback: FeedbackEntry[]): KnowledgeEntry["topic"] {
-  // Skip feedback_analysis if there's no feedback to analyze
   const eligible = feedback.length > 0
     ? STUDY_TOPICS
     : STUDY_TOPICS.filter((t) => t !== "feedback_analysis");
@@ -56,7 +54,7 @@ function buildStudyPrompt(
 ): string {
   const specialties = config.specialties.length > 0
     ? config.specialties.join(", ")
-    : "general-purpose tasks";
+    : "financial content operations";
 
   const recentFeedback = feedback.slice(-10);
   const feedbackSummary = recentFeedback.length > 0
@@ -69,8 +67,8 @@ function buildStudyPrompt(
     .map((k) => `- [${k.topic}] ${k.insight.slice(0, 150)}`)
     .join("\n") || "None yet.";
 
-  const base = `You are a self-improving autonomous agent specializing in: ${specialties}.
-You are conducting a study session to improve your future task performance.
+  const base = `You are a self-improving autonomous finance content operator specialising in: ${specialties}.
+You are conducting a study session to improve future research, editorial quality, SEO performance, and monetisation workflows.
 
 ## Your existing knowledge
 ${existingKnowledge}
@@ -84,18 +82,19 @@ ${feedbackSummary}
       return `${base}
 ## Task: Feedback Analysis
 
-Analyze the feedback patterns above. What patterns emerge? What kinds of tasks scored well vs poorly? What specific improvements should you make?
+Analyse the feedback patterns above. What kinds of finance content tasks scored well vs poorly? What should improve in terms of clarity, sourcing, structure, compliance wording, monetisation fit, or turnaround?
 
-Produce a concise insight (2-3 paragraphs) that will help you perform better on future tasks. Focus on actionable takeaways.`;
+Produce a concise insight (2-3 paragraphs) that will help future performance. Focus on actionable takeaways.`;
 
     case "specialty_research":
       return `${base}
-## Task: Specialty Deep-Dive
+## Task: Finance Specialty Deep-Dive
 
-As a specialist in ${specialties}, research and articulate:
-1. Common best practices and quality standards
-2. Frequent pitfalls and how to avoid them
-3. Patterns that distinguish excellent work from mediocre work
+As a specialist in ${specialties}, articulate:
+1. Best practices for source-backed finance content
+2. Common SEO patterns that improve discoverability and trust
+3. Affiliate and newsletter workflow pitfalls that damage credibility
+4. Editorial habits that separate excellent finance content from mediocre content
 
 Produce a concise insight (2-3 paragraphs) with concrete, actionable knowledge.`;
 
@@ -103,7 +102,7 @@ Produce a concise insight (2-3 paragraphs) with concrete, actionable knowledge.`
       return `${base}
 ## Task: Practice Simulation
 
-Generate a realistic task request that a client might submit for your specialties (${specialties}). Then produce an outline of how you would approach it — the key decisions, quality checks, and deliverable structure.
+Generate a realistic finance-content task request a client might submit. Then outline how you would execute it — research plan, SEO structure, compliance safeguards, monetisation opportunities, and deliverable format.
 
 Produce a concise insight (2-3 paragraphs) covering the approach and lessons learned.`;
   }
@@ -121,8 +120,7 @@ export async function runStudySession(
   const knowledge = loadKnowledge();
   const topic = pickTopic(knowledge, feedback);
 
-  // Rotate through specialties instead of always using the first one
-  const specialtyPool = config.specialties.length > 0 ? config.specialties : ["general"];
+  const specialtyPool = config.specialties.length > 0 ? config.specialties : ["finance-content"];
   const topicEntries = knowledge.filter((k) => k.topic === topic);
   const specialty = specialtyPool[topicEntries.length % specialtyPool.length];
   const prompt = buildStudyPrompt(topic, config, feedback, knowledge);
@@ -134,7 +132,6 @@ export async function runStudySession(
   let totalTokens = 0;
   let lastText = "";
 
-  // Run up to MAX_STUDY_TURNS — no tools, pure reasoning
   for (let turn = 0; turn < MAX_STUDY_TURNS; turn++) {
     const response = await llm.chat(messages);
     totalTokens += response.usage.inputTokens + response.usage.outputTokens;
@@ -144,19 +141,17 @@ export async function runStudySession(
     );
     lastText = textBlocks.map((b) => b.text).join("\n");
 
-    // Single turn is usually enough for study sessions
     if (response.stopReason === "end_turn") break;
 
     messages.push({ role: "assistant", content: response.content });
     messages.push({
       role: "user",
-      content: "Continue your analysis. Focus on the most actionable insight.",
+      content: "Continue your analysis. Focus on the most actionable insight for finance content operations.",
     });
   }
 
   const insight = lastText.trim() || "No insight produced.";
 
-  // Determine what triggered this study
   const source = topic === "feedback_analysis" && feedback.length > 0
     ? `${feedback.length} feedback entries (avg ${(feedback.reduce((s, f) => s + f.score, 0) / feedback.length).toFixed(1)}/5)`
     : `scheduled ${topic} session`;

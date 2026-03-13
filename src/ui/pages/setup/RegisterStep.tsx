@@ -160,12 +160,12 @@ export function RegisterStep({ onNext }: RegisterStepProps) {
       <div className="space-y-3">
         <div>
           <label className="block text-[8px] text-zinc-700 font-mono font-bold tracking-[0.2em] mb-1">NAME</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="My Work Agent" className={inputCls} />
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Finance Content Operator" className={inputCls} />
         </div>
 
         <div>
           <label className="block text-[8px] text-zinc-700 font-mono font-bold tracking-[0.2em] mb-1">DESCRIPTION</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="What does your agent do?" rows={3} className={`${inputCls} resize-none`} />
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Researches markets, plans finance content, optimises SEO, and supports newsletter growth." rows={3} className={`${inputCls} resize-none`} />
         </div>
 
         <div>

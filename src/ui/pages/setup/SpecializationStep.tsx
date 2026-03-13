@@ -11,7 +11,7 @@ const PRICING_STRATEGIES = [
 ];
 
 export function SpecializationStep({ onComplete }: SpecializationStepProps) {
-  const [specialties, setSpecialties] = useState("");
+  const [specialties, setSpecialties] = useState("stock analysis, market research, finance seo, affiliate content, newsletter automation");
   const [strategy, setStrategy] = useState("fixed");
   const [baseRate, setBaseRate] = useState("0.005");
   const [maxRate, setMaxRate] = useState("0.05");
@@ -50,7 +50,7 @@ export function SpecializationStep({ onComplete }: SpecializationStepProps) {
       <div>
         <h2 className="text-base font-mono font-bold text-zinc-200 mb-1">Deploy</h2>
         <p className="text-[11px] text-zinc-600 font-mono leading-relaxed">
-          Configure expertise, pricing, and automation before launch.
+          Configure finance expertise, pricing, and automation before launch.
         </p>
       </div>
 
@@ -61,7 +61,7 @@ export function SpecializationStep({ onComplete }: SpecializationStepProps) {
       <div className="space-y-3">
         <div>
           <label className="block text-[8px] text-zinc-700 font-mono font-bold tracking-[0.2em] mb-1">SPECIALTIES</label>
-          <input type="text" value={specialties} onChange={(e) => setSpecialties(e.target.value)} placeholder="typescript, react, solidity" className={inputCls} />
+          <input type="text" value={specialties} onChange={(e) => setSpecialties(e.target.value)} placeholder="stock analysis, market research, finance seo" className={inputCls} />
           <p className="text-[9px] text-zinc-800 mt-0.5 font-mono">Comma-separated</p>
         </div>
 

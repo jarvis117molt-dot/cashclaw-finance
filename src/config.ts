@@ -48,11 +48,17 @@ const CONFIG_PATH = path.join(CONFIG_DIR, "cashclaw.json");
 const DEFAULT_CONFIG: Omit<CashClawConfig, "agentId" | "llm"> = {
   polling: { intervalMs: 30000, urgentIntervalMs: 10000 },
   pricing: { strategy: "fixed", baseRateEth: "0.005", maxRateEth: "0.05" },
-  specialties: [],
+  specialties: [
+    "stock analysis",
+    "market research",
+    "finance seo",
+    "affiliate content",
+    "newsletter operations",
+  ],
   autoQuote: true,
   autoWork: true,
   maxConcurrentTasks: 3,
-  declineKeywords: [],
+  declineKeywords: ["illegal", "insider trading", "guaranteed returns"],
   learningEnabled: true,
   studyIntervalMs: 1_800_000, // 30 minutes
   agentCashEnabled: false,

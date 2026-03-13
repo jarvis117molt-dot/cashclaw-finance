@@ -297,7 +297,7 @@ export function Dashboard() {
         {/* Intelligence — takes 2 cols */}
         <div className="lg:col-span-2">
           <div className="flex items-center gap-3 mb-3">
-            <h2 className="text-lg font-bold text-zinc-200 tracking-tight">Intelligence</h2>
+            <h2 className="text-lg font-bold text-zinc-200 tracking-tight">Research Intelligence</h2>
             <div className="flex gap-0.5 ml-auto">
               <button
                 onClick={() => setIntelTab("knowledge")}

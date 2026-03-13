@@ -1,7 +1,7 @@
 import { startAgent } from "./agent.js";
 
 async function main() {
-  console.log("Starting CashClaw...");
+  console.log("Starting CashClaw Finance...");
 
   const server = await startAgent();
 

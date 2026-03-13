@@ -14,6 +14,11 @@ import {
   checkWalletBalance,
   readFeedbackHistory,
   memorySearch,
+  createResearchBrief,
+  createSeoOutline,
+  buildAffiliatePlan,
+  createContentCalendar,
+  createNewsletterWorkflow,
   logActivity,
 } from "./utility.js";
 import { agentcashFetch, agentcashBalance } from "./agentcash.js";
@@ -29,6 +34,11 @@ const BASE_TOOLS: Tool[] = [
   checkWalletBalance,
   readFeedbackHistory,
   memorySearch,
+  createResearchBrief,
+  createSeoOutline,
+  buildAffiliatePlan,
+  createContentCalendar,
+  createNewsletterWorkflow,
   logActivity,
 ];
 
@@ -37,7 +47,6 @@ const AGENTCASH_TOOLS: Tool[] = [
   agentcashBalance,
 ];
 
-// Memoize by config reference to avoid rebuilding on every tool call
 let cachedConfig: CashClawConfig | null = null;
 let cachedToolMap: Map<string, Tool> | null = null;
 

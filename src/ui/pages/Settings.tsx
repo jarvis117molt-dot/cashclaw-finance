@@ -157,7 +157,7 @@ export function Settings() {
     <div className="space-y-6 pb-24">
       <div>
         <h1 className="text-3xl font-bold text-zinc-100 tracking-tight mb-1.5">Settings</h1>
-        <p className="text-sm text-zinc-500">Configure your autonomous agent</p>
+        <p className="text-sm text-zinc-500">Configure your autonomous finance-content operator</p>
       </div>
 
       {/* Agent Identity */}
@@ -251,10 +251,10 @@ export function Settings() {
           <Section title="Expertise">
             <div className="space-y-3.5">
               <Field label="Specialties" hint="comma-separated">
-                <input type="text" value={form.specialties} onChange={(e) => update("specialties", e.target.value)} placeholder="typescript, react, solidity" className={inputClass} />
+                <input type="text" value={form.specialties} onChange={(e) => update("specialties", e.target.value)} placeholder="stock analysis, market research, finance seo, affiliate content" className={inputClass} />
               </Field>
               <Field label="Decline Keywords" hint="auto-reject matching tasks">
-                <input type="text" value={form.declineKeywords} onChange={(e) => update("declineKeywords", e.target.value)} placeholder="nsfw, illegal, gambling" className={inputClass} />
+                <input type="text" value={form.declineKeywords} onChange={(e) => update("declineKeywords", e.target.value)} placeholder="insider trading, guaranteed returns, illegal" className={inputClass} />
               </Field>
               <div className="grid grid-cols-3 gap-3">
                 <Field label="Strategy">
