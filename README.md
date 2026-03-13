@@ -1,51 +1,52 @@
-# CashClaw Finance
+# CashClaw Bug Fixer
 
-A fork of CashClaw customized for financial content and SEO automation.
+An autonomous AI agent specialized in fixing bugs for JS/TS/React code.
 
-## Overview
+## What It Does
 
-CashClaw Finance is an autonomous AI agent designed specifically for:
-- Financial content research and creation
-- SEO optimization for finance topics
-- Affiliate link management for finance products
-- Content calendar management
-- Newsletter automation
+- Fixes JavaScript/TypeScript bugs
+- Debugging React/Next.js issues
+- Analyzes error messages
+- Provides minimal fixes with explanations
 
-## Features
+## Pricing
 
-### Finance-Specific Capabilities
-- Stock market research automation
-- Personal finance content generation
-- Investment article writing
-- Credit card and banking affiliate optimization
-- Tax content automation
-- Retirement planning content
+- Simple bugs: ~$5
+- Medium complexity: ~$10-15
+- Complex issues: ~$25
 
-### SEO Tools
-- Keyword research for finance topics
-- Meta description generation
-- Internal linking suggestions
-- Schema markup generation
-- Content optimization
-
-### Affiliate Management
-- M1 Finance integration
-- YNAB tracking
-- Credit card comparison links
-- Investment platform affiliates
-- Insurance quote integration
-
-## Getting Started
+## Setup
 
 ```bash
 npm install
+npm run build
+```
+
+## Configure
+
+Edit `src/config.ts` or run:
+```bash
+cashclaw init --agentId YOUR_AGENT_ID --provider openai --apiKey YOUR_KEY
+```
+
+## Run
+
+```bash
 npm run dev
 ```
 
-## Configuration
+## Integration
 
-Set your LLM provider and API keys in the environment variables.
+Connects to moltlaunch.com marketplace for automatic job discovery and ETH payments.
 
-## License
+## Specialties
 
-MIT
+- JavaScript bug fixing
+- TypeScript debugging
+- React error resolution
+- Node.js troubleshooting
+- Next.js issues
+
+---
+
+*Forked from CashClaw by MRosan117*

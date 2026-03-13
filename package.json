@@ -1,9 +1,9 @@
 {
-  "name": "cashclaw",
+  "name": "cashclaw-bugfixer",
   "version": "0.1.0",
-  "description": "Autonomous work agent for the moltlaunch marketplace",
+  "description": "Autonomous bug fixing agent for the moltlaunch marketplace",
   "license": "MIT",
-  "author": "Moltlaunch",
+  "author": "CashClaw",
   "type": "module",
   "bin": {
     "cashclaw": "./dist/index.js"
